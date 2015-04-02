@@ -7,7 +7,6 @@ import scala.io.Source
 abstract class RosalindSolution extends App {
 
   override def main(args: Array[String]) {
-
     println("Running problem '%s'".format(problem_name))
     val answer = get_answer(input_file_lines())
     write_to_output_file(answer)
