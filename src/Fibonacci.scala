@@ -7,9 +7,9 @@ import _root_.runtime.RosalindSolution
 
 object Fibonacci extends RosalindSolution {
 
-  override def problem_name: String = "fibo"
+  def problem_name: String = "fibo"
 
-  override def get_answer(input_lines: Iterator[String]): String = {
+  def get_answer(input_lines: Iterator[String]): String = {
     fib(input_lines.next.toInt).toString
   }
 

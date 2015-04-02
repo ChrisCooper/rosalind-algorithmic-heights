@@ -6,14 +6,15 @@ import scala.io.Source
 
 abstract class RosalindSolution extends App {
 
-  def problem_name: String
-
   override def main(args: Array[String]) {
+
+    println("Running problem '%s'".format(problem_name))
     val answer = get_answer(input_file_lines())
     write_to_output_file(answer)
   }
 
-  def get_answer(input_lines: Iterator[String]): String = "No solution implemented"
+  def problem_name: String
+  def get_answer(input_lines: Iterator[String]): String
 
   def input_file_lines() =
     Source.fromFile("/home/chris/pro/rosalind-algorithmic-heights/input_files/rosalind_%s.txt".format(problem_name)).getLines()
