@@ -1,8 +1,3 @@
-/**
- * Created by chris on 29/03/15.
- */
-package FIBO
-
 import _root_.runtime.RosalindSolution
 
 object Fibonacci extends RosalindSolution {

@@ -1,8 +1,5 @@
 import _root_.runtime.RosalindSolution
 
-/**
- * Created by chris on 02/04/15.
- */
 object BinarySearch extends RosalindSolution {
   def problem_name: String = "bins"
 
@@ -10,8 +7,8 @@ object BinarySearch extends RosalindSolution {
     val search_pool_length = input_lines.next.toInt
     val num_queries = input_lines.next.toInt
 
-    val pool = input_lines.next.split(" ").map{_.toInt}
-    val queries = input_lines.next.split(" ").map{_.toInt}
+    val pool = input_lines.next.split("\\s").map{_.toInt}
+    val queries = input_lines.next.split("\\s").map{_.toInt}
 
     return queries.map{binary_search(_, pool)}.mkString(" ")
   }
