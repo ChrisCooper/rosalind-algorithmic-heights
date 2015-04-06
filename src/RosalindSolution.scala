@@ -2,6 +2,7 @@ package runtime
 import java.awt.datatransfer.StringSelection
 import java.awt.Toolkit
 import java.io.File
+import scala.collection.JavaConverters._
 import scala.io.Source
 
 abstract class RosalindSolution extends App {
@@ -31,9 +32,32 @@ abstract class RosalindSolution extends App {
     println("Copying to clipboard:\n%s".format(str))
 
     val stringSelection = new StringSelection(str)
-    val clipboard = Toolkit.getDefaultToolkit().getSystemClipboard()
+    val clipboard = Toolkit.getDefaultToolkit.getSystemClipboard
     clipboard.setContents(stringSelection, null)
 
     println("Finished copying to clipboard")
+  }
+
+  /*
+  * Graphs
+  */
+  def parsed_edge_list(input_lines: Iterator[String]): Array[Array[Int]] = {
+    val graph_metadata = input_lines.next().split("\\s").map{_.toInt}
+    val num_vertices = graph_metadata(0)
+
+    val graph = Array.ofDim[Int](num_vertices, num_vertices)
+
+    for ((from_i, to_i) <- input_lines.map(line_to_pair)) {
+      graph(from_i)(to_i) = 1
+      graph(to_i)(from_i) = 1
+    }
+
+    graph
+  }
+
+  def line_to_pair(line: String): (Int, Int) = {
+    val parts = line.split("\\s").map{_.toInt - 1}
+    assert(parts.length == 2)
+    (parts(0), parts(1))
   }
 }
