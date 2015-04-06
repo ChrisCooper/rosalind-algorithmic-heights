@@ -4,11 +4,11 @@ object BinarySearch extends RosalindSolution {
   def problem_name: String = "bins"
 
   def get_answer(input_lines: Iterator[String]): String = {
-    val search_pool_length = input_lines.next.toInt
-    val num_queries = input_lines.next.toInt
+    val search_pool_length = input_lines.next().toInt
+    val num_queries = input_lines.next().toInt
 
-    val pool = input_lines.next.split("\\s").map{_.toInt}
-    val queries = input_lines.next.split("\\s").map{_.toInt}
+    val pool = input_lines.next().split("\\s").map{_.toInt}
+    val queries = input_lines.next().split("\\s").map{_.toInt}
 
     return queries.map{binary_search(_, pool)}.mkString(" ")
   }
