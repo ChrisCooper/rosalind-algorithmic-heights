@@ -39,8 +39,8 @@ abstract class RosalindSolution extends App {
   }
 
   /*
-  * Graphs
-  */
+   * Graphs
+   */
   def parsed_edge_list(input_lines: Iterator[String]): Array[Array[Int]] = {
     val graph_metadata = input_lines.next().split("\\s").map{_.toInt}
     val num_vertices = graph_metadata(0)
@@ -59,5 +59,22 @@ abstract class RosalindSolution extends App {
     val parts = line.split("\\s").map{_.toInt - 1}
     assert(parts.length == 2)
     (parts(0), parts(1))
+  }
+
+  /*
+   * Utilities
+   */
+
+  implicit class ArrayAdditions[T](a: Array[T]) {
+
+    def indicesWhere(predicate: (T) => Boolean): Array[Int] = {
+      a.zipWithIndex.filter{case (t, i: Int) => predicate(t)}.map{
+        case (_, i: Int) => i
+      }
+    }
+
+    def atIndices(indices: Array[Int]): Iterable[T] = {
+      for (index <- indices) yield { a(index)   }
+    }
   }
 }
