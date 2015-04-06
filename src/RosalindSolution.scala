@@ -68,13 +68,11 @@ abstract class RosalindSolution extends App {
   implicit class ArrayAdditions[T](a: Array[T]) {
 
     def indicesWhere(predicate: (T) => Boolean): Array[Int] = {
-      a.zipWithIndex.filter{case (t, i: Int) => predicate(t)}.map{
-        case (_, i: Int) => i
-      }
+      a.indices.filter{(i: Int) => predicate(a(i))}.toArray
     }
 
     def atIndices(indices: Array[Int]): Iterable[T] = {
-      for (index <- indices) yield { a(index)   }
+      for (index <- indices) yield { a(index) }
     }
   }
 }
