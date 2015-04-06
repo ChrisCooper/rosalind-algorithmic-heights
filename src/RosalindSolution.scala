@@ -75,4 +75,10 @@ abstract class RosalindSolution extends App {
       for (index <- indices) yield { a(index) }
     }
   }
+
+  implicit class StringIteratorAdditions[T](iterator: Iterator[String]) {
+    def next_as_array(): Array[Int] = {
+      iterator.next().split("\\s").map{_.toInt}
+    }
+  }
 }

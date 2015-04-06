@@ -10,7 +10,7 @@ object MajorityElement extends RosalindSolution {
   def get_answer(input_lines: Iterator[String]): String = {
 
     // Ignore metadata
-    val metadata = input_lines.next().split("\\s").map{_.toInt}
+    val metadata = input_lines.next_as_array()
     val array_lengths = metadata(1)
     val threshold = ceil(array_lengths / 2.0)
 
