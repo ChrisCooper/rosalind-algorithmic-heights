@@ -81,4 +81,10 @@ abstract class RosalindSolution extends App {
       iterator.next().split("\\s").map{_.toInt}
     }
   }
+
+  implicit class StringAdditions[T](str: String) {
+    def toIntArray(): Array[Int] = {
+      str.split("\\s").map{_.toInt}
+    }
+  }
 }
